@@ -4,14 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        .card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
 </head>
-<script src="jsfile.js"></script>
+<script src="jsfile.js" defer></script>
 <body>
     <h1>Search</h1>
     <form id="search-form">
         <input type="text" id="search-input" placeholder="search some photo">
         <button type="submit">Search</button>
     </form>
-    <div id="results"></div>
+    <div id="photos"></div>
 </body>
 </html>
