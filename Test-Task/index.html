@@ -1,32 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
     <style>
-        .card {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+      .card {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
 
-        img {
-            width: 200px;
-            height: 200px;
-        }
+      img {
+        width: 200px;
+        height: 200px;
+      }
+
+      /* .result {
+            display: flex;
+            flex-direction: row;
+        } */
+      #photos {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      #morePhotos{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .popupClass {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 1;
+      }
+
+      .modal-content {
+        background-color: white;
+        padding: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 10px;
+        cursor: pointer;
+      }
     </style>
-</head>
-<script src="jsfile.js" defer></script>
-<body>
+  </head>
+  <script src="jsfile.js" defer></script>
+  <body>
     <h1>Search</h1>
     <form id="search-form">
-        <input type="text" id="search-input" placeholder="search some photo">
-        <button type="submit">Search</button>
+      <input type="text" id="search-input" placeholder="search some photo" />
+      <button type="submit">Search</button>
     </form>
-    <div id="photos"></div>
-</body>
+
+    <div class="result" id="openModalBtn">
+      <div id="photos"></div>
+    </div>
+
+    <div id="popup" class="popupClass">
+      <div class="modal-content">
+        <span id="closeModalBtn" class="close">&times;</span>
+        <h2 id="id-photo"></h2>
+        <p id="comments">This is some modal content.</p>
+        <p id="likes">This is some modal content.</p>
+        <p id="tags">This is some modal content.</p>
+        <p id="views">This is some modal content.</p>
+      </div>
+    </div>
+
+    <button id="loadMoreBtn">Load More</button>
+    <div class="result" id="openModalBtn">
+        <div id="morePhotos"></div>
+    </div>
+  </body>
 </html>
