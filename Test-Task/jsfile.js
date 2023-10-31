@@ -11,7 +11,9 @@ function createCard(data) {
 
   card.innerHTML = `
         <img class="image" src=${data.largeImageURL} alt=${data.tags}/>
-        <p>${data.likes}</p>
+        <p>${data.likes} likes</p>
+        <p>${data.tags}</p>
+        <span class="icon">⭐</span>
     `;
 
   return card;
@@ -98,4 +100,5 @@ loadMoreBtn.addEventListener("click", (e) => {
   const searchValues = document.getElementById("search-input").value;
   fetchMoreData(searchValues);
 });
+
 
