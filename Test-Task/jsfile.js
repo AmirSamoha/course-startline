@@ -42,13 +42,35 @@ const fetchData = async (searchValues) => {
 };
 
 
-searchForm.addEventListener("submit", (e) => {
+// searchForm.addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   const searchValues = document.getElementById("search-input").value;
+//   fetchData(searchValues);
+// });
+
+
+
+searchForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const searchValues = document.getElementById("search-input").value;
-  fetchData(searchValues);
+  const searchInput = document.getElementById("search-input").value;
+
+  try {
+    const response = await fetch('http://localhost:3000/search', {
+      method: 'POST',
+      body: JSON.stringify({ searchInput }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    console.log('Data from the server:', data);
+  } catch (error) {
+    console.error('Error fetching data from the server:', error);
+  }
 });
-
-
 // const popup = document.getElementById('popup');
 // const openModalBtn = document.getElementById('openModalBtn');
 // const closeModalBtn = document.getElementById('closeModalBtn');
