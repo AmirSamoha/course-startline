@@ -13,9 +13,9 @@ app.get('/search', async (req, res) => {
 
     try {
         const response = await axios.get(apiUrl);
-        res.json(response.data);
+        return res.json(response.data);
     } catch (error) {
-        res.status(500).send('Error fetching data from server: ' + error.message);
+        return res.status(500).send('Error fetching data from server: ' + error.message);
     }
 });
 
