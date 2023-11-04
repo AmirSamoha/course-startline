@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      img {
+        width: 100%;
+        height: 50%;
+        cursor: pointer;
+      }
+      #result {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .card {
+        border: 2px solid black;
+        width: 250px;
+        height: 300px;
+      }
+      .icon {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="search-form">
+      <input type="text" id="search-input" placeholder="search some photo" />
+      <button type="submit">Search</button>
+    </form>
+
+    <p id="info"></p>
+
+    <div id="result"></div>
+
+    <script>
+      const API_KEY = "39709500-3fa7c7110c7ab095eb9da8985";
+      const basicUrl = `https://pixabay.com/api/?key=${API_KEY}`;
+
+      //function to get photos data
+      const fetchData = async (searchValues) => {
+        try {
+          const response = await fetch(
+            `${basicUrl}&q=${searchValues}=&image_type=photo`
+          );
+          const data = await response.json();
+          console.log(data.hits);
+
+          const results = document.getElementById("result");
+
+          const cards = data.hits.map((item) => createCard(item));
+          results.append(...cards);
+        } catch (error) {
+          console.log(error.message, "Error fetching");
+        }
+      };
+
+      const searchForm = document.getElementById("search-form");
+
+      searchForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const searchValues = document.getElementById("search-input").value;
+        fetchData(searchValues);
+      });
+
+      //     //create a new card
+      //     function createCard(data) {
+      //       const card = document.createElement("div");
+      //       card.classList.add("card");
+
+      //       card.innerHTML = `
+      //       <img id=${data.id} class="image" src=${data.largeImageURL} alt=${data.tags}/>
+      //       <p>${data.likes} likes</p>
+      //       <p>${data.tags}</p>
+      //       <p>id: ${data.id}</p>
+      //       <span class="icon">⭐</span>
+      //   `;
+
+      //       return card;
+      //     }
+
+      //create a new card test
+      function createCard(data) {
+        const card = document.createElement("div");
+        card.classList.add("card");
+
+        card.innerHTML = `
+          <img onclick=showImageDetails(${data.id}) class="image" src=${data.largeImageURL} alt=${data.tags}/>
+          <p>${data.likes} likes</p>
+          <p>${data.tags}</p>
+          <p>id: ${data.id}</p>
+          <span class="icon">⭐</span>
+      `;
+
+        return card;
+      }
+
+      async function showImageDetails(id) {
+        try {
+          const response = await fetch(
+            `https://pixabay.com/api/?key=${API_KEY}&id=${id}`
+          );
+          const data = await response.json();
+          console.log(data.hits[0]);
+
+          const para = document.createElement("p");
+          para.innerHTML = `
+          <p>id: ${data.hits[0].id}</p>
+          <p>comments: ${data.hits[0].comments}</p>
+          <p>downloads: ${data.hits[0].downloads}</p>
+          <p>likes: ${data.hits[0].likes}</p>
+          tags:<button>${data.hits[0].tags}</button>
+          `;
+          document.getElementById("info").innerHTML = "";
+          document.getElementById("info").appendChild(para);
+        } catch (error) {
+          console.log(error.message, "Error fetching");
+        }
+      }
+    </script>
+  </body>
+</html>
