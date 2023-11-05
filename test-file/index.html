@@ -107,13 +107,22 @@
           console.log(data.hits[0]);
 
           const para = document.createElement("p");
+          const tags = data.hits[0].tags;
+          const tagsArray = tags.split(",");
+          let buttonsHtml = "";
+
+          for (let i in tagsArray) {
+            buttonsHtml += `<button type="button">${tagsArray[i]}</button>`;
+          }
+
           para.innerHTML = `
-          <p>id: ${data.hits[0].id}</p>
-          <p>comments: ${data.hits[0].comments}</p>
-          <p>downloads: ${data.hits[0].downloads}</p>
-          <p>likes: ${data.hits[0].likes}</p>
-          tags:<button>${data.hits[0].tags}</button>
-          `;
+            <p>id: ${data.hits[0].id}</p>
+            <p>comments: ${data.hits[0].comments}</p>
+            <p>downloads: ${data.hits[0].downloads}</p>
+            <p>likes: ${data.hits[0].likes}</p>
+            <span id="tags">tags: ${buttonsHtml}</span>
+            `;
+
           document.getElementById("info").innerHTML = "";
           document.getElementById("info").appendChild(para);
         } catch (error) {
