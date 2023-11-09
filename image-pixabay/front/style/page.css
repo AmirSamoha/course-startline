@@ -1,0 +1,28 @@
+img {
+  width: 100%;
+  height: 50%;
+  cursor: pointer;
+}
+#result {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#result-moreImages {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.card {
+  border: 1px solid black;
+  width: 250px;
+  height: 300px;
+}
+.icon {
+  cursor: pointer;
+}
+
+#loadMoreBtn{
+  display: none;
+}

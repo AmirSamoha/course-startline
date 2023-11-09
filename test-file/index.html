@@ -88,7 +88,7 @@
         card.classList.add("card");
 
         card.innerHTML = `
-          <img onclick=showImageDetails(${data.id}) class="image" src=${data.largeImageURL} alt=${data.tags}/>
+          <img onclick="showImageDetails(${data.id})" class="image" src=${data.largeImageURL} alt=${data.tags}/>
           <p>${data.likes} likes</p>
           <p>${data.tags}</p>
           <p>id: ${data.id}</p>
