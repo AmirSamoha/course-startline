@@ -19,10 +19,9 @@ img {
   width: 250px;
   height: 300px;
 }
-.icon {
+.like-icon {
   cursor: pointer;
 }
-
 #loadMoreBtn{
   display: none;
 }

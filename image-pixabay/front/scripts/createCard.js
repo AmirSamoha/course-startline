@@ -7,7 +7,7 @@ function createCard(data) {
       <p>${data.likes} likes</p>
       <p>${data.tags}</p>
       <p>id: ${data.id}</p>
-      <span class="icon">⭐</span>
+      <span id=${data.id} class="like-icon">💛</span>
   `;
   return card;
 }
