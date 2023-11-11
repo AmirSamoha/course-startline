@@ -4,6 +4,7 @@ const searchForm = document.getElementById("search-form");
 const results = document.getElementById("result");
 const loadMoreBtn = document.getElementById('loadMoreBtn');
 
+
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const searchValues = document.getElementById("search-input").value;
@@ -13,9 +14,10 @@ searchForm.addEventListener("submit", (e) => {
 });
 
 
-
-
-loadMoreBtn.addEventListener("click", (e) => {
+loadMoreBtn.addEventListener("click", () => {
   const searchValues = document.getElementById("search-input").value;
   fetchMoreData(searchValues);
 });
+
+
+

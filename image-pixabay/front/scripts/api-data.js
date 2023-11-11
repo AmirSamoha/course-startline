@@ -11,7 +11,7 @@ const fetchData = async (searchValues) => {
       `${basicUrl}&q=${searchValues}=&image_type=photo`
     );
     const data = await response.json();
-    console.log(data.hits);
+    //console.log(data.hits);
 
     const results = document.getElementById("result");
 
@@ -40,5 +40,9 @@ const fetchMoreData = async (searchValues) => {
     console.log(error.message, "Error fetching");
   }
 };
+
+const fetchByTags = (tag) => {
+
+}
 
 export { fetchData, fetchMoreData }

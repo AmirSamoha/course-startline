@@ -26,3 +26,20 @@ img {
 #loadMoreBtn{
   display: none;
 }
+
+
+/* #tags {
+  display: block;
+  margin-top: 12px;
+} */
+
+#tags button {
+  margin-right: 8px;
+  margin-bottom: 8px;
+  padding: 6px 12px;
+  background-color: #00cc03;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
