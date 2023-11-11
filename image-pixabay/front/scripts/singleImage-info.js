@@ -44,10 +44,7 @@ async function showImageDetails(id) {
 
     tagBtns.forEach((tagBtn) => {
       tagBtn.addEventListener("click", () => {
-        // Get the text content of the clicked button
-        const tag = tagBtn.textContent;
-    
-        // Call the searchByTag function with the tag
+        const tag = tagBtn.textContent;  
         searchByTag(tag);
       });
     });
